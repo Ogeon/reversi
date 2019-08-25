@@ -1,0 +1,38 @@
+.colorDot {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+
+    &.white {
+        background: #eee;
+        border-color: #aaa;
+    }
+
+    &.black {
+        background: black;
+        border-color: #444;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .colorDot {
+        margin-right: 0.5em;
+    }
+
+    &.inline {
+        display: inline;
+
+        .colorDot {
+            position: relative;
+            top: 0.2em;
+            margin-right: 0;
+        }
+    }
+}

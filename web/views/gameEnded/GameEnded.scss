@@ -1,0 +1,21 @@
+.headline {
+    text-align: center;
+}
+
+.score {
+    text-align: center;
+    font-size: 130%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+
+    button {
+        width: 100%;
+
+        &:not(:last-child) {
+            margin-right: 1em;
+        }
+    }
+}

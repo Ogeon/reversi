@@ -1,0 +1,150 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100vw;
+    height: 100vh;
+
+    @media (orientation: landscape) {
+        flex-direction: row;
+    }
+
+    > * {
+        display: grid;
+        grid-template:
+            'player1' 1fr
+            'board  ' calc(100vmin - 2rem)
+            'player2' 1fr /
+            calc(100vmin - 2rem);
+        grid-gap: 1rem;
+        padding: 1rem;
+        margin: auto;
+        min-width: 0;
+        min-height: 0;
+
+        @media (orientation: landscape) {
+            grid-template:
+                'player1 board    player2' calc(100vmin - 2rem) /
+                1fr     calc(100vmin - 2rem)  1fr;
+        }
+    }
+}
+
+.player1 {
+    grid-area: player1;
+}
+
+.player2 {
+    grid-area: player2;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-area: board;
+    perspective: 600px;
+    background: #696;
+    overflow: hidden;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+    border-color: rgba($color: white, $alpha: 0.5);
+
+    > * {
+        position: relative;
+        transform-style: preserve-3d;
+        border-width: 0 1px 1px 0;
+        border-style: solid;
+        border-color: rgba($color: white, $alpha: 0.5);
+
+        &.hint {
+            background: #8a8;
+        }
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            transform-origin: center;
+            backface-visibility: hidden;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.1s ease;
+            pointer-events: none;
+        }
+
+        &::before {
+            transform: translate3d(0, 0, 50px);
+        }
+
+        &::after {
+            transform: translate3d(0, 0, 50px) rotateY(180deg);
+        }
+
+        &.originallyBlack, &.originallyWhite {
+            &::before, &::after {
+                opacity: 1;
+            }
+
+            &::before {
+                transform: translate3d(0, 0, 0px);
+            }
+
+            &::after {
+                transform: translate3d(0, 0, 0px) rotateY(180deg);
+            }
+        }
+
+        &.originallyBlack {
+            &::before {
+                background: black;
+                border-color: #444;
+            }
+
+            &::after {
+                background: #eee;
+                border-color: #aaa;
+            }
+
+            &.white {
+                &::before {
+                    transform: translate3d(0, 0, 0px) rotateY(180deg);
+                }
+
+                &::after {
+                    transform: translate3d(0, 0, 0px) rotateY(360deg);
+                }
+            }
+        }
+
+        &.originallyWhite {
+            &::before {
+                background: #eee;
+                border-color: #aaa;
+            }
+
+            &::after {
+                background: black;
+                border-color: #444;
+            }
+
+            &.black {
+                &::before {
+                    transform: translate3d(0, 0, 0px) rotateY(180deg);
+                }
+
+                &::after {
+                    transform: translate3d(0, 0, 0px) rotateY(360deg);
+                }
+            }
+        }
+    }
+}
+
+.blurred {
+    filter: blur(0.3rem);
+}

@@ -1,0 +1,38 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    color: #383838;
+}
+
+html, body, :global(#root) {
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+body {
+    background: white
+}
+
+fieldset {
+    border: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+    > div:not(:last-child) {
+        margin-bottom: 1em;
+    }
+}
+
+legend {
+    color: rgba($color: #000000, $alpha: 0.7);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+
+    &:after {
+        display: inline;
+        content: ':';
+    }
+}

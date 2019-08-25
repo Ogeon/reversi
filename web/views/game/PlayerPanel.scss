@@ -1,0 +1,42 @@
+.playerPanel {
+    display: grid;
+    grid-template:
+        'name     score  '  auto
+        'controls controls' 1fr /
+         1fr      auto;
+    grid-gap: 0.3rem;
+
+    > * {
+        padding: 0.3rem;
+    }
+}
+
+.name {
+    grid-area: name;
+    justify-content: flex-start;
+    border-left: 3px solid transparent;
+}
+
+.score {
+    grid-area: score;
+    font-variant-numeric: tabular-nums;
+}
+
+.controls {
+    grid-area: controls;
+
+    button {
+        display: block;
+        width: 100%;
+    }
+}
+
+.yourTurn {
+    .name {
+        border-left-color: currentColor;
+    }
+
+    .name, .score {
+        background-color: rgba($color: black, $alpha: 0.1);
+    }
+}

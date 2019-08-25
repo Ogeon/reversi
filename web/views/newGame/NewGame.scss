@@ -1,0 +1,16 @@
+.form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+    gap: 1em;
+    min-width: 0;
+    max-width: 100%;
+
+    > :last-child {
+        padding-top: 0.75em;
+    }
+
+    input, select, button {
+        display: block;
+        width: 100%;
+    }
+}
