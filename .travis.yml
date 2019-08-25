@@ -1,0 +1,25 @@
+language: rust
+branches:
+  - master
+cache:
+  - yarn: true
+  - cargo: true
+node_js:
+  - "8"
+install:
+  - yarn
+before_script:
+  - curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh -s -- -f
+  - rustup target add wasm32-unknown-unknown
+script:
+  - yarn build-optimized || true
+  - yarn build-optimized # Run it twice because the wasm-pack webpack plugin seems to be slow
+  - rm dist/*.map #lazy sourcemap cleanup
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: dist
+  on:
+    branch: master
