@@ -1,0 +1,2 @@
+self.webpackChunk([1],[,function(n,t,e){"use strict";e.r(t),e.d(t,"get_move",function(){return i});var r=e(2);let u=null;let c=0;function f(n){const t=r.a(1*n.length);return(null!==u&&u.buffer===r.c.buffer||(u=new Uint8Array(r.c.buffer)),u).set(n,t/1),c=n.length,t}function i(n,t){const e=r.b(f(n),c,t);return 16777215===e?void 0:e}},function(n,t,e){"use strict";var r=e.w[n.i];n.exports=r,r.d()}]);
+//# sourceMappingURL=1.bothello1.worker.js.map
