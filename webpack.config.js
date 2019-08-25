@@ -10,7 +10,7 @@ const webpageConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        publicPath: '/'
+        publicPath: '/reversi/'
     },
     devtool: 'source-map',
     module: {
@@ -74,7 +74,7 @@ const bothello1Config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bothello1.worker.js',
-        publicPath: '/'
+        publicPath: '/reversi/'
     },
     devtool: 'source-map',
     module: {

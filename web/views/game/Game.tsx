@@ -10,7 +10,7 @@ import { NewGame } from '../newGame/NewGame';
 import * as styles from './Game.scss';
 import { GameEnded } from '../gameEnded/GameEnded';
 
-const bothello1Worker = new Worker('/bothello1.worker.js');
+const bothello1Worker = new Worker('/reversi/bothello1.worker.js');
 
 export function Game() {
     const [player1, setPlayer1] = React.useState<PlayerType>({type: 'human', config: {name: 'Player 1'}});
